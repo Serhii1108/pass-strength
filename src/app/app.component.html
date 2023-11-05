@@ -1,0 +1,14 @@
+<section class="pass-container">
+  <form [formGroup]="passForm">
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="passInput" (input)="checkPassword()" />
+    </mat-form-field>
+  </form>
+
+  <div class="pass-strength" ngClass="{{status}}">
+    <div class="pass-strength__block"></div>
+    <div class="pass-strength__block"></div>
+    <div class="pass-strength__block"></div>
+  </div>
+</section>
