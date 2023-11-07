@@ -1,0 +1,24 @@
+.pass-strength {
+  display: flex;
+  column-gap: 5px;
+  width: 210px;
+
+  &__block {
+    flex: 1;
+    height: 10px;
+    background-color: #c7c7c7;
+  }
+
+  &.easy :first-child,
+  &.warn .pass-strength__block {
+    background-color: red;
+  }
+
+  &.medium .pass-strength__block:not(:last-child) {
+    background-color: yellow;
+  }
+
+  &.strong .pass-strength__block {
+    background-color: green;
+  }
+}

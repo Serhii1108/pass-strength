@@ -1,0 +1,6 @@
+<form [formGroup]="passForm">
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="passInput" (input)="checkPassword()" />
+  </mat-form-field>
+</form>
