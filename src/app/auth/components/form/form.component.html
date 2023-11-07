@@ -1,6 +1,4 @@
 <form [formGroup]="passForm">
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input matInput formControlName="passInput" (input)="checkPassword()" />
-  </mat-form-field>
+  <app-custom-input [formGroup]="passForm" [controlName]="'passInput'" [label]="'Password'"
+    (value)="checkPassword($event)"></app-custom-input>
 </form>

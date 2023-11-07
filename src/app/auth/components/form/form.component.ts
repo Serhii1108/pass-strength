@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
 import { Status, statusCodes } from 'src/app/shared/constance';
@@ -9,21 +9,23 @@ import { Status, statusCodes } from 'src/app/shared/constance';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   @Output() status = new EventEmitter<Status>()
 
-  public passForm: UntypedFormGroup = new UntypedFormGroup({
-    passInput: new UntypedFormControl('')
-  })
+  public passForm!: FormGroup
 
-  public constructor(private authService: AuthService){
+  public constructor(private authService: AuthService, private fb: FormBuilder) {
     this.status.emit('clear')
   }
 
-  public checkPassword(): void {
-    const password: string =  this.passForm.get('passInput')?.value.trim()
-    
-    if (!password.length){
+  ngOnInit(): void {
+    this.passForm = this.fb.group({
+      passInput: ['']
+    })
+  }
+
+  public checkPassword(password: string): void {
+    if (!password.length) {
       this.status.emit('clear')
       return
     }

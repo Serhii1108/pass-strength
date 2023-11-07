@@ -1,0 +1,4 @@
+<mat-form-field [formGroup]="formGroup">
+  <mat-label>{{ label }}</mat-label>
+  <input matInput formControlName="{{ controlName }}" (input)="onInput($event)" />
+</mat-form-field>
